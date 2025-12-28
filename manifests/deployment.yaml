@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mini-ethos-deployment
+spec:
+  replicas: 1  # We want 1 copy running
+  selector:
+    matchLabels:
+      app: mini-ethos
+  template:
+    metadata:
+      labels:
+        app: mini-ethos
+    spec:
+      containers:
+      - name: mini-ethos-container
+        image: techsavvyroshan/mini-ethos:v1 # <--- Your artifact from Phase 1
+        ports:
+        - containerPort: 8000
